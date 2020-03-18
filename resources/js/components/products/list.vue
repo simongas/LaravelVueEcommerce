@@ -111,14 +111,15 @@ export default {
 		},
 
 		deleteItem(item) {
+			// Delete Item
 			const index = this.items.indexOf(item);
 			confirm("Are you sure you want to delete this item?") &&
 				axios.get("/api/products/delete/" + item.id).then(response => {
 					this.items = response.data;
 				});
 		},
-
 		close() {
+			// Close
 			this.dialog = false;
 			setTimeout(() => {
 				this.editedItem = Object.assign({}, this.defaultItem);

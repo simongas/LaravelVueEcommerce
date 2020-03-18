@@ -28,6 +28,6 @@ class ProductCreateRequest extends FormRequest
             'description' => 'required|string',
             'price' => 'required|numeric',
 
-        ];
+        ]; 
     }
 }
