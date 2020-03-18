@@ -4,10 +4,10 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductCreateRequest;
 use App\Product;
-
 
 class ProductsController extends Controller
 {
@@ -21,14 +21,18 @@ class ProductsController extends Controller
 
     public function store(ProductCreateRequest $request){
         if($request->validated()){
-            Product::create($request->all());
+            $data = $request->all();
+            $data['slug'] = Str::slug($data['name']);
+            Product::create($data);
         }
         return Product::all();
     }
 
     public function update(ProductCreateRequest $request){
         if($request->validated()){
-            Product::find($request->id)->fill($request->all())->save();
+            $data = $request->all();
+            $data['slug'] = Str::slug($data['name']);
+            Product::find($request->id)->fill($data)->save();
         }
         return Product::all();
     }

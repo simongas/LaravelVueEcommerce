@@ -2290,9 +2290,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -41003,7 +41000,7 @@ var render = function() {
                                     _c(
                                       "v-col",
                                       {
-                                        attrs: { cols: "12", sm: "6", md: "4" }
+                                        attrs: { cols: "12", sm: "6", md: "6" }
                                       },
                                       [
                                         _c("v-text-field", {
@@ -41027,31 +41024,7 @@ var render = function() {
                                     _c(
                                       "v-col",
                                       {
-                                        attrs: { cols: "12", sm: "6", md: "4" }
-                                      },
-                                      [
-                                        _c("v-text-field", {
-                                          attrs: { label: "Slug" },
-                                          model: {
-                                            value: _vm.editedItem.slug,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.editedItem,
-                                                "slug",
-                                                $$v
-                                              )
-                                            },
-                                            expression: "editedItem.slug"
-                                          }
-                                        })
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-col",
-                                      {
-                                        attrs: { cols: "12", sm: "6", md: "4" }
+                                        attrs: { cols: "12", sm: "6", md: "6" }
                                       },
                                       [
                                         _c("v-text-field", {
@@ -99345,8 +99318,8 @@ var opts = {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\www\laravelVue\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\www\laravelVue\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\www\LaravelVue\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\www\LaravelVue\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
