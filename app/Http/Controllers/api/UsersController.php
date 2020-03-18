@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 use App\Http\Requests\UserCreateRequest;
@@ -22,14 +23,18 @@ class UsersController extends Controller
 
     public function store(UserCreateRequest $request){
         if($request->validated()){
-            User::create($request->all());
+            $data = $request->all();
+            $data['password'] = Hash::make($data['password']);
+            User::create($data);
         }
         return User::all();
     }
 
     public function update(UserCreateRequest $request){
         if($request->validated()){
-            User::find($request->id)->fill($request->all())->save();
+            $data = $request->all();
+            $data['password'] = Hash::make($data['password']);
+            User::find($request->id)->fill($data)->save();
         }
         return User::all();
     }

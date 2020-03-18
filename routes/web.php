@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/testPass', function(){
+    return Hash::make('simongas0214');
+});
+
 Route::get('/{any}', function () {
     return view('store');
 })->where('any', '.*');

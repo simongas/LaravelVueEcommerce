@@ -44,9 +44,6 @@ const actions = {
         let totals = {}
         totals.cost = 0;
         products.map(function(value, key) {
-            console.log(totals.cost)
-            console.log(value.price)
-            console.log('-------------')
             totals.cost += value.price;
         });
         totals.quantity = products.length
