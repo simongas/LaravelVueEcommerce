@@ -2,7 +2,11 @@ import Axios from "axios";
 
 const state = {
     user: {},
-    products: {}
+    totals: {
+        cost: 0.00,
+        quantity: 0
+    },
+    products: []
 };
 const getters = {}
 const actions = {
@@ -34,6 +38,19 @@ const actions = {
         if(window.location.pathname != "/"){
             window.location.replace("/")
         }
+    },
+    updateProducts({commit}, products) {
+        commit('setProducts', products);
+        let totals = {}
+        totals.cost = 0;
+        products.map(function(value, key) {
+            console.log(totals.cost)
+            console.log(value.price)
+            console.log('-------------')
+            totals.cost += value.price;
+        });
+        totals.quantity = products.length
+        commit('setTotals', totals);
     }
 }
 const mutations = {
@@ -41,7 +58,10 @@ const mutations = {
         state.user = data;
     },
     setProducts(state, data){
-        state.products = data
+        state.products = data;
+    },
+    setTotals(state, data){
+        state.totals = data;
     }
 }
 

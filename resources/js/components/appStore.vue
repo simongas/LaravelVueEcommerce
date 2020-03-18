@@ -11,48 +11,54 @@
 					</v-list-item-content>
 				</v-list-item>
 
-                <template v-if="currentUser.id"> 
-                    <v-list-item link to="/users">
-                        <v-list-item-action>
-                            <v-icon>mdi-account-group</v-icon>
-                        </v-list-item-action>
-                        <v-list-item-content>
-                            <v-list-item-title>Users</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item link to="/products">
-                        <v-list-item-action>
-                            <v-icon>mdi-package-variant-closed</v-icon>
-                        </v-list-item-action>
-                        <v-list-item-content>
-                            <v-list-item-title>Products</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item link @click="logout">
-                        <v-list-item-action>
-                            <v-icon>mdi-power</v-icon>
-                        </v-list-item-action>
-                        <v-list-item-content>
-                            <v-list-item-title>Logout {{ currentUser.name }}</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                </template>
-                <template v-else>
-                    <v-list-item link to="/login">
-                        <v-list-item-action>
-                            <v-icon>mdi-account</v-icon>
-                        </v-list-item-action>
-                        <v-list-item-content>
-                            <v-list-item-title>Login {{ currentUser.name }}</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                </template>
+				<template v-if="currentUser.id">
+					<v-list-item link to="/users">
+						<v-list-item-action>
+							<v-icon>mdi-account-group</v-icon>
+						</v-list-item-action>
+						<v-list-item-content>
+							<v-list-item-title>Users</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
+					<v-list-item link to="/products">
+						<v-list-item-action>
+							<v-icon>mdi-package-variant-closed</v-icon>
+						</v-list-item-action>
+						<v-list-item-content>
+							<v-list-item-title>Products</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
+					<v-list-item link @click="logout">
+						<v-list-item-action>
+							<v-icon>mdi-power</v-icon>
+						</v-list-item-action>
+						<v-list-item-content>
+							<v-list-item-title>Logout {{ currentUser.name }}</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
+				</template>
+				<template v-else>
+					<v-list-item link to="/login">
+						<v-list-item-action>
+							<v-icon>mdi-account</v-icon>
+						</v-list-item-action>
+						<v-list-item-content>
+							<v-list-item-title>Login {{ currentUser.name }}</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
+				</template>
 			</v-list>
 		</v-navigation-drawer>
 
 		<v-app-bar app color="indigo" dark>
 			<v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-			<v-toolbar-title>Products Catalog</v-toolbar-title>
+			<v-toolbar-title>My Shop</v-toolbar-title>
+			<v-spacer></v-spacer>
+			<p class="mr-3 mt-3">({{ currentTotals.quantity }})</p>
+			<p class="mr-3 mt-3">$ {{currentTotals.cost}}</p>
+			<v-btn icon class="mr-5" to="/cart">
+				<v-icon>mdi-cart</v-icon>
+			</v-btn>
 		</v-app-bar>
 
 		<v-content>
@@ -83,11 +89,16 @@ export default {
 			get() {
 				return this.$store.state.currentUser.user;
 			}
+		},
+		currentTotals: {
+			get() {
+				return this.$store.state.currentUser.totals;
+			}
 		}
 	},
 	methods: {
 		logout() {
-            this.$store.dispatch("currentUser/logoutUser");
+			this.$store.dispatch("currentUser/logoutUser");
 		}
 	},
 	created() {

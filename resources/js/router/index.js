@@ -4,9 +4,10 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Shop from  "../components/products/container"
+import Cart from  "../components/products/cart"
 import Products from  "../components/products/list"
 import ProductView from  "../components/products/view"
-import Users from  "../components/users/container"
+import Users from  "../components/users/list"
 import UsersCreate from  "../components/users/create"
 import Login from  "../components/login/container"
 
@@ -40,6 +41,11 @@ const routes = [
         component: ProductView,
         name: "product",
         path: "/products/:slug"
+    },
+    {
+        component: Cart,
+        name: "cart",
+        path: "/cart"
     },
 ];
 

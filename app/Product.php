@@ -18,4 +18,7 @@ class Product extends Model
 
     protected $table = 'products';
     
+    public function scopeSlug($slug){
+        return $this->where('slug', $slug);
+    }
 }
